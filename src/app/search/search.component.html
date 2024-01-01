@@ -30,7 +30,7 @@
     <span class="input-group-text bg-transparent search-text-left">
       <img src="assets/search.svg" alt="dropdown-opened">
     </span>
-    <input type="text" class="form-control input-name" placeholder="NAME" aria-label="NAME" [ngModel]="universityName"
+    <input type="text" class="form-control input-name" placeholder="University name" aria-label="NAME" [ngModel]="universityName"
            (ngModelChange)="changeUniversityName($event)">
     @if (universityName) {
       <span class="input-group-text bg-transparent delete-text" (click)="changeUniversityName('')">

@@ -9,6 +9,7 @@ import { map, Subject, switchMap } from "rxjs";
 import { University } from "./services/university/university.model";
 import { faHandPointUp, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
+import compareByName from "./utils/compareByName";
 
 
 @Component({
@@ -66,7 +67,7 @@ export class AppComponent {
       switchMap((params: HttpParams) => {
         return this.vm.getUniversities$(params).pipe(map((universities: University[]) => {
           this.loadingTable.set(false)
-          return universities.slice(0, 10)
+          return universities.slice(0, 10).sort(compareByName);
         }))
       }))
   }

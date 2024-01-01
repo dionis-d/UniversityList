@@ -1,0 +1,48 @@
+<div class="country-list-container">
+  <p class="country-label">Countries</p>
+  @if (loading) {
+    Loading ...
+  } @else {
+    <div ngbDropdown>
+      <button type="button" class="btn country-list" ngbDropdownToggle>
+
+        @if (!selectedCountry) {
+          <span>Select Country</span>
+        } @else {
+          <span>{{ selectedCountry }}</span>
+        }
+
+        <img src="assets/arrow-up.svg" alt="dropdown-opened">
+      </button>
+      <div ngbDropdownMenu aria-labelledby="country-list" class="list-menu">
+        @for (country of countryList; track $index) {
+          <button ngbDropdownItem class="country-list-item" (click)="selectCountry(country)">{{ country }}</button>
+        } @empty {
+          <button ngbDropdownItem class="country-list-item">Empty List</button>
+        }
+      </div>
+    </div>
+  }
+</div>
+
+<div class="search-name-container">
+  <div class="input-group mb-3 search-name">
+    <span class="input-group-text bg-transparent search-text-left">
+      <img src="assets/search.svg" alt="dropdown-opened">
+    </span>
+    <input type="text" class="form-control input-name" placeholder="NAME" aria-label="NAME" [ngModel]="universityName"
+           (ngModelChange)="changeUniversityName($event)">
+    @if (universityName) {
+      <span class="input-group-text bg-transparent delete-text" (click)="changeUniversityName('')">
+      <fa-icon [icon]="faXmark"></fa-icon>
+    </span>
+    }
+
+  </div>
+</div>
+
+<div class="buttons-container">
+  <button class="col-4 btn btn-primary btn-get-started" type="button" (click)="search()">Get Started</button>
+  <button class="col-4 btn btn-primary btn-get-started" type="button" (click)="reset()">Reset</button>
+</div>
+

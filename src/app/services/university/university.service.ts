@@ -1,7 +1,8 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { University } from "./university.model";
-import { map } from "rxjs";
+import { map, of } from "rxjs";
+import { countries } from "./countries.local";
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,6 @@ export class UniversityService {
   }
 
   getLocalCountries() {
-    return []
+    return of(countries)
   }
 }

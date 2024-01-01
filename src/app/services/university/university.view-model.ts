@@ -14,7 +14,8 @@ export function injectUniversities() {
       return Array.from(new Set(countries)).sort();
     }), catchError((error) => {
       console.log('Getting countries from local file...')
-      return of(countries)
+      list.isLoading.set(false);
+      return service.getLocalCountries();
     })),
     loading: list.isLoading,
   }

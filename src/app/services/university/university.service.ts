@@ -26,4 +26,8 @@ export class UniversityService {
       isLoading: isLoading
     }
   }
+
+  getLocalCountries() {
+    return []
+  }
 }

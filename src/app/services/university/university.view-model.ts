@@ -1,7 +1,8 @@
 import { inject } from "@angular/core";
 import { UniversityService } from "./university.service";
 import { HttpParams } from "@angular/common/http";
-import { map } from "rxjs";
+import { catchError, map, of } from "rxjs";
+import { countries } from "./countries.local";
 
 
 export function injectUniversities() {
@@ -10,7 +11,10 @@ export function injectUniversities() {
   return {
     getUniversities$: (params?: HttpParams) => service.getUniversities(params),
     countries: list.countries.pipe(map((countries: string[]) => {
-      return Array.from(new Set(countries)).sort()
+      return Array.from(new Set(countries)).sort();
+    }), catchError((error) => {
+      console.log('Getting countries from local file...')
+      return of(countries)
     })),
     loading: list.isLoading,
   }

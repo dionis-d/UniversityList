@@ -5,7 +5,7 @@ import { SearchComponent } from "./search/search.component";
 import { HttpParams } from "@angular/common/http";
 import { injectUniversities } from "./services/university/university.view-model";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { map, Subject, switchMap } from "rxjs";
+import { catchError, map, of, Subject, switchMap } from "rxjs";
 import { University } from "./services/university/university.model";
 import { faHandPointUp, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";

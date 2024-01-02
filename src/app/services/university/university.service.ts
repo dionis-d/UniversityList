@@ -8,7 +8,7 @@ import { countries } from "./countries.local";
   providedIn: 'root'
 })
 export class UniversityService {
-  private readonly URL = 'http://wuniversities.hipolabs.com/search'
+  private readonly URL = 'http://universities.hipolabs.com/search'
   http = inject(HttpClient)
 
   getUniversities(params: HttpParams = new HttpParams()) {

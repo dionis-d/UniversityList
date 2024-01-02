@@ -3,7 +3,7 @@
   @if (loading) {
     Loading ...
   } @else {
-    <div ngbDropdown (openChange)="dropdownOpenedChage($event)">
+    <div #menu ngbDropdown (openChange)="dropdownOpenedChange($event)" >
       <button type="button" class="btn country-list" ngbDropdownToggle>
 
         @if (!selectedCountry) {

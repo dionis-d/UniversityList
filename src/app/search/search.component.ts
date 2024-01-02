@@ -52,7 +52,7 @@ export class SearchComponent {
     this.resetButtonClick.emit()
   }
 
-  dropdownOpenedChage(opened: boolean) {
+  dropdownOpenedChange(opened: boolean) {
     this.isDropdownOpened = opened
   }
 }

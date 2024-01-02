@@ -22,7 +22,7 @@ export function injectUniversities() {
       return service.getLocalUniversities().pipe(map((universities: University[]) => {
         console.log('Loading from local file ...')
         const list = universities.filter((university: University) => {
-          return university.country.toUpperCase() === country.toUpperCase() && university.name.toUpperCase().includes(name.toUpperCase())
+          return university.country.toUpperCase() === country.toUpperCase() || university.name.toUpperCase().includes(name.toUpperCase())
         });
 
         return list;

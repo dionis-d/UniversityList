@@ -3,6 +3,7 @@ import { NgbDropdown, NgbDropdownItem, NgbDropdownMenu, NgbDropdownToggle } from
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { FormsModule } from "@angular/forms";
+import { NgClass } from "@angular/common";
 
 @Component({
   selector: 'app-search',
@@ -13,7 +14,8 @@ import { FormsModule } from "@angular/forms";
     NgbDropdownToggle,
     NgbDropdownItem,
     FaIconComponent,
-    FormsModule
+    FormsModule,
+    NgClass
   ],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss',
@@ -29,7 +31,7 @@ export class SearchComponent {
   @Output() universityNameChanged = new EventEmitter<string>()
   @Output() searchButtonClick = new EventEmitter<void>()
   @Output() resetButtonClick = new EventEmitter<void>()
-
+  isDropdownOpened = false;
   protected readonly faXmark = faXmark;
 
   selectCountry(country: string) {
@@ -48,5 +50,9 @@ export class SearchComponent {
 
   reset() {
     this.resetButtonClick.emit()
+  }
+
+  dropdownOpenedChage(opened: boolean) {
+    this.isDropdownOpened = opened
   }
 }

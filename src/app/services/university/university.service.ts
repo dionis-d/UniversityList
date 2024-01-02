@@ -31,4 +31,8 @@ export class UniversityService {
   getLocalCountries() {
     return of(countries)
   }
+
+  getLocalUniversities() {
+   return this.http.get<University[]>('assets/universities.json');
+  }
 }
